@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Недвижимость в Краснодаре</title>
+<style>
+body { font-family: Arial, sans-serif; margin:0; padding:0; line-height:1.6; color:#333; background:#fff;}
+header { background:#1a73e8; color:white; padding:20px; text-align:center;}
+section { padding:40px 20px; max-width:900px; margin:auto; display:none; }
+section.active { display:block; }
+h2 { color:#1a73e8; margin-bottom:20px; }
+p { margin-bottom:20px; }
+button.cta-button { display:inline-block; background:#fff; color:#28a745; padding:15px 25px; font-weight:bold; border:2px solid #28a745; border-radius:8px; cursor:pointer; text-align:center; margin:10px 0; width:100%; box-sizing:border-box; font-size:16px; }
+form select { width:100%; padding:15px; font-size:16px; border:1px solid #ccc; border-radius:8px; box-sizing:border-box; margin-bottom:15px; }
+#result { margin-top:30px; display:none; background:#e3f2fd; padding:20px; border-radius:8px; }
+.highlight { background:#fff3cd; padding:10px; border-left:5px solid #ffeeba; margin-bottom:20px; }
+@media (max-width:600px){
+  section { padding:30px 15px; }
+  button.cta-button { font-size:18px; padding:18px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Недвижимость в Краснодаре — выгодно и безопасно</h1>
+</header>
+
+<section id="block1" class="active">
+  <h2>Осторожно: на что можно нарваться при покупке жилья</h2>
+  <p class="highlight">Квартиры с обременениями, арестами, материнской долей, участие в судебных исках — без проверки и поддержки вы рискуете потерять деньги и время.</p>
+  <button class="cta-button next-btn" data-target="block2">Покупка «наугад» — чего ожидать</button>
+</section>
+
+<section id="block2">
+  <h2>Покупка «наугад» — чего ожидать</h2>
+  <p>Район Московская / Шанхай после дождя превращается в лужи. Куликово Поле — дома без газа, часть зданий может быть снесена. Нет дорог, коммуникаций и инфраструктуры.</p>
+  <button class="cta-button next-btn" data-target="block3">Почему именно Краснодар</button>
+</section>
+
+<section id="block3">
+  <h2>Почему именно Краснодар</h2>
+  <p>Цены растут постоянно. Масштабные инвестиционные проекты: 88 проектов на 139 млрд ₽ в 2023 году. Мягкий климат, 1 час до моря, 1,5 часа до гор, новые развязки разгружают пробки.</p>
+  <button class="cta-button next-btn" data-target="block4">А как же близость СВО?</button>
+</section>
+
+<section id="block4">
+  <h2>А как же близость СВО?</h2>
+  <p><strong>Посмотрите, что об этом думают наши клиенты и мы:</strong></p>
+  <p>(видео и отзывы пока отсутствуют)</p>
+  <button class="cta-button next-btn" data-target="block5">Почему выбирают нас</button>
+</section>
+
+<section id="block5">
+  <h2>Почему выбирают нас</h2>
+  <p>Работаем только с проверенными застройщиками, команда опытных юристов, полная юридическая поддержка, персональные скидки, ежедневная база проблемных компаний, сопровождаем до ключей и после.</p>
+  <button class="cta-button next-btn" data-target="block6">Получите подборку</button>
+</section>
+
+<section id="block6">
+  <h2 style="text-align:center; color:#1a73e8; margin-bottom:30px;">Получите подборку объектов</h2>
+  <form id="selectionForm">
+    <select name="type" required>
+      <option value="">Что вы ищете?</option>
+      <option value="Студия">Студия</option>
+      <option value="2-комнатная квартира">2-комнатная квартира</option>
+      <option value="3-комнатная квартира">3-комнатная квартира</option>
+      <option value="4-комнатная квартира">4-комнатная квартира</option>
+      <option value="Дом">Дом</option>
+      <option value="Свой вариант">Свой вариант</option>
+    </select>
+
+    <select name="new_or_old" required>
+      <option value="">Тип жилья</option>
+      <option value="Новостройка">Новостройка</option>
+      <option value="Вторичное жилье">Вторичное жилье</option>
+    </select>
+
+    <select name="district" required>
+      <option value="">Район</option>
+      <option value="Центральный">Центральный</option>
+      <option value="Западный">Западный</option>
+      <option value="Прикубанский">Прикубанский</option>
+      <option value="Карасунский">Карасунский</option>
+      <option value="Новая Адыгея">Новая Адыгея</option>
+      <option value="Краснодарский край">Краснодарский край (укажите локацию)</option>
+    </select>
+
+    <select name="payment" required>
+      <option value="">Способ покупки</option>
+      <option value="Наличные">Наличные</option>
+      <option value="Ипотека">Ипотека</option>
+    </select>
+
+    <button type="submit" class="cta-button">Получить подборку</button>
+  </form>
+  <div id="result"></div>
+</section>
+
+<footer>
+  <p>© 2025 Ваша компания. Все права защищены.</p>
+</footer>
+
+<script>
+  // Пошаговое открытие блоков
+  const nextButtons = document.querySelectorAll('.next-btn');
+  nextButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.dataset.target;
+      const target = document.getElementById(targetId);
+      if(target){
+        target.classList.add('active');
+        target.scrollIntoView({behavior:'smooth'});
+      }
+    });
+  });
+
+  // Обработка формы подборки
+  document.getElementById('selectionForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const form = e.target;
+
+    const type = form.elements['type'].value;
+    const new_or_old = form.elements['new_or_old'].value;
+    const district = form.elements['district'].value;
+    const payment = form.elements['payment'].value;
+
+    const resultDiv = document.getElementById('result');
+    resultDiv.style.display = 'block';
+    resultDiv.innerHTML = `
+      <h3 style="color:#1a73e8;">Ваша персональная подборка:</h3>
+      <p><strong>Тип объекта:</strong> ${type}</p>
+      <p><strong>Новое/вторичка:</strong> ${new_or_old}</p>
+      <p><strong>Район:</strong> ${district}</p>
+      <p><strong>Способ покупки:</strong> ${payment}</p>
+      <p>Мы подберём для вас лучшие проверенные объекты и свяжемся с вами!</p>
+    `;
+    resultDiv.scrollIntoView({behavior:'smooth'});
+  });
+</script>
+
+</body>
+</html>
